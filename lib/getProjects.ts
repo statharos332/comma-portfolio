@@ -6,7 +6,9 @@ export async function getProjects() {
       _id,
       title,
       description,
-      image
+      image,
+      category,
+      slug
     }
   `)
 }

@@ -6,23 +6,13 @@ import Statement from "./components/Statement";
 import Services from "./components/Services";
 import Contact from "./components/Contact";
 
-import { client } from "@/sanity/lib/client";
-
-async function getProjects() {
-    return client.fetch(`
-    *[_type == "project"]{
-      title,
-      description,
-      image
-    }
-  `);
-}
+import { getProjects } from "@/lib/getProjects";
 
 export default async function Home() {
     const projects = await getProjects();
 
     return (
-        <main className="bg-[#050505] text-[#f4f4f0] overflow-x-hidden">
+        <main className="overflow-x-hidden" style={{ background: 'var(--bg)', color: 'var(--fg)' }}>
             <div className="fixed inset-0 pointer-events-none opacity-[0.07] z-50 noise" />
 
             <Nav />
