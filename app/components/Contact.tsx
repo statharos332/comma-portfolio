@@ -9,7 +9,7 @@ export default function Contact() {
                     04 / Contact
                 </div>
                 <h2
-                    className="text-[clamp(70px,14vw,230px)] leading-[0.72] tracking-[-0.078em] uppercase font-black"
+                    className="text-[clamp(70px,14vw,230px)] leading-[0.72] tracking-[-0.098em] uppercase font-black"
                     style={{ color: 'var(--fg)' }}
                 >
                     Let's<br />shake<br />things up.

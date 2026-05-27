@@ -1,4 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap');
+@font-face {
+    font-family: 'MicroTechnic';
+    src: url('./fonts/Micro Technic Extended Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
 
 @import "tailwindcss";
 
@@ -20,6 +27,7 @@
     --border-mid:   rgba(255,255,255,.25);
     --nav-bg:       rgba(0,0,0,.82);
     --tag-border:   rgba(255,255,255,.15);
+    --font-display: 'MicroTechnic', sans-serif;
 }
 
 /* ─── LIGHT ───────────────────────────────────────── */
@@ -38,6 +46,11 @@ html.light {
     --border-mid:   rgba(0,0,0,.22);
     --nav-bg:       rgba(245,245,241,.88);
     --tag-border:   rgba(0,0,0,.12);
+    --font-display: 'MicroTechnic', sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-display);
 }
 
 html {

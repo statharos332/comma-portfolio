@@ -10,7 +10,7 @@ export default function Hero() {
                     </div>
 
                     <h1
-                        className="text-[clamp(76px,16vw,260px)] leading-[0.72] tracking-[-0.098em] uppercase font-black"
+                        className="text-[clamp(76px,16vw,170px)] leading-[0.72] tracking-[-0.098em] uppercase font-black origin-left"
                         style={{ color: 'var(--fg)' }}
                     >
                         WORK<br />THAT<br />MOVES

@@ -26,7 +26,7 @@ export default function Nav() {
                     <span className="text-[11px]" style={{ color: 'var(--fg-muted)' }}>
                         info@comma-abc.com
                     </span>
-                    <ThemeToggle />
+
                 </div>
 
             </div>
@@ -41,7 +41,9 @@ export default function Nav() {
                 <span className="ml-auto">Branding</span>
                 <span>Campaigns</span>
                 <span>E-commerce</span>
+                <ThemeToggle />
             </div>
+
         </header>
     );
 }
