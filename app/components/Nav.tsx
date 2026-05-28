@@ -1,49 +1,79 @@
+'use client'
+
 import ThemeToggle from './ThemeToggle';
 
 export default function Nav() {
     return (
         <header
             className="sticky top-0 z-40 backdrop-blur-xl"
-            style={{
-                background: 'var(--nav-bg)',
-                borderBottom: '1px solid var(--border)',
-            }}
+            style={{ background: 'var(--nav-bg)', borderBottom: '1px solid var(--line)' }}
         >
-            <div className="max-w-[1540px] mx-auto px-[clamp(18px,2.4vw,40px)] h-[38px] grid grid-cols-3 items-center text-[11px]">
-
-                <div className="text-[22px] font-black tracking-[-0.07em] uppercase" style={{ color: 'var(--fg)' }}>
-                    COMMA
-                </div>
-
-                <nav className="flex gap-7 justify-center" style={{ color: 'var(--fg-muted)' }}>
-                    <a href="#fragments" className="hover:opacity-100 transition-opacity" style={{ opacity: 0.7 }}>Fragments</a>
-                    <a href="#work" className="hover:opacity-100 transition-opacity" style={{ opacity: 0.7 }}>Cases</a>
-                    <a href="#services" className="hover:opacity-100 transition-opacity" style={{ opacity: 0.7 }}>Capabilities</a>
-                    <a href="#contact" className="hover:opacity-100 transition-opacity" style={{ opacity: 0.7 }}>Contact</a>
-                </nav>
-
-                <div className="flex items-center justify-end gap-4">
-                    <span className="text-[11px]" style={{ color: 'var(--fg-muted)' }}>
-                        info@comma-abc.com
-                    </span>
-
-                </div>
-
-            </div>
-
+            {/* TOP BAR */}
             <div
-                className="h-[28px] flex items-center gap-6 px-[clamp(18px,2.4vw,40px)] max-w-[1540px] mx-auto text-[10px] uppercase overflow-hidden whitespace-nowrap"
-                style={{ borderTop: '1px solid var(--border)', color: 'var(--fg-dim)' }}
+                className="max-w-[var(--max)] mx-auto px-[var(--pad)] h-[32px] grid items-center text-[10px] uppercase tracking-[.03em]"
+                style={{ gridTemplateColumns: '1fr auto 1fr', color: 'var(--muted)' }}
             >
-                <span>Social media</span>
-                <span>TVC production</span>
-                <span>Digital strategy</span>
-                <span className="ml-auto">Branding</span>
-                <span>Campaigns</span>
-                <span>E-commerce</span>
-                <ThemeToggle />
+                {/* BRAND */}
+                <a
+                    href="#"
+                    className="display text-[14px] tracking-[-0.055em] whitespace-nowrap"
+                    style={{ color: 'var(--fg)', fontFamily: 'var(--font-display)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '-.055em', lineHeight: 1 }}
+                >
+                    COMMA <span style={{ fontFamily: 'inherit', letterSpacing: 'inherit', marginLeft: '7px', fontWeight: 'inherit' }}>ARCHIVES</span>
+                </a>
+
+                {/* CENTER LINK */}
+                <a
+                    href="https://www.comma-abc.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="justify-self-center transition-colors hidden md:block"
+                    style={{ fontFamily: 'Inter,sans-serif', fontSize: '12px', fontWeight: 600, letterSpacing: '.04em', textTransform: 'uppercase', color: 'var(--muted)' }}
+                    onMouseEnter={e => (e.currentTarget.style.color = 'var(--fg)')}
+                    onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}
+                >
+                    VISIT MAIN WEBSITE: <span style={{ color: 'var(--fg)' }}>COMMA-ABC.COM</span>
+                </a>
+
+                {/* EMAIL */}
+                <a
+                    href="mailto:info@comma-abc.com"
+                    className="justify-self-end whitespace-nowrap transition-colors"
+                    style={{ color: 'var(--muted)' }}
+                    onMouseEnter={e => (e.currentTarget.style.color = 'var(--fg)')}
+                    onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}
+                >
+                    info@comma-abc.com
+                </a>
             </div>
 
+            {/* SUB BAR */}
+            <div
+                className="max-w-[var(--max)] mx-auto px-[var(--pad)] h-[34px] flex items-center no-scrollbar overflow-auto"
+                style={{ borderTop: '1px solid var(--line)', fontSize: '10px', textTransform: 'uppercase', color: 'var(--muted)', letterSpacing: '.035em', whiteSpace: 'nowrap' }}
+            >
+                <nav className="flex gap-[34px] items-center" aria-label="Main menu">
+                    {[
+                        { href: '#fragments', label: 'Fragments' },
+                        { href: '#cases',     label: 'Cases' },
+                        { href: '#capabilities', label: 'Capabilities' },
+                        { href: '#footer',    label: 'Contact' },
+                    ].map(({ href, label }) => (
+                        <a
+                            key={label}
+                            href={href}
+                            className="transition-colors"
+                            onMouseEnter={e => (e.currentTarget.style.color = 'var(--fg)')}
+                            onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}
+                        >
+                            {label}
+                        </a>
+                    ))}
+                </nav>
+                <div className="ml-auto">
+                    <ThemeToggle />
+                </div>
+            </div>
         </header>
     );
 }

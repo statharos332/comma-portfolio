@@ -1,88 +1,75 @@
 'use client';
 
-import { urlFor } from "@/sanity/lib/image";
+import { urlFor } from '@/sanity/lib/image';
+
+const CASE_BG = ['#c8c2b7','#9b7652','#d9d4ca','#111'];
 
 export default function Cases({ projects }: any) {
     return (
         <section
-            id="work"
-            className="pt-[96px] pb-[96px] min-h-screen px-[clamp(18px,2.4vw,40px)]"
+            id="cases"
+            className="px-[var(--pad)] max-w-[var(--max)] mx-auto"
+            style={{ paddingBottom: '150px' }}
         >
-            {/* HEADER */}
-            <div className="grid grid-cols-[minmax(180px,1fr)_auto_minmax(180px,1fr)] items-end gap-[28px] mb-[34px]">
-                <span className="text-[11px]" style={{ color: 'var(--fg-dim)' }}>02 / Cases</span>
+            {/* HEAD */}
+            <div
+                className="section-head grid items-end gap-6 mb-[28px]"
+                style={{ gridTemplateColumns: '1fr auto 1fr' }}
+            >
+                <span className="note">02 / Cases</span>
                 <h2
-                    className="text-[clamp(52px,10.5vw,170px)] leading-[0.8] tracking-[-0.085em] uppercase font-black"
-                    style={{ color: 'var(--fg)' }}
+                    className="display"
+                    style={{ fontSize: 'clamp(54px,7.4vw,132px)', color: 'var(--fg)', whiteSpace: 'nowrap' }}
                 >
                     Cases
                 </h2>
-                <span className="text-[11px] text-right" style={{ color: 'var(--fg-dim)' }}>
+                <span className="note note-right" style={{ textAlign: 'right' }}>
                     Presentations of selected campaigns
                 </span>
             </div>
 
             {/* GRID */}
-            <div
-                className="grid md:grid-cols-2 gap-[4px] pt-[18px]"
-                style={{ borderTop: '1px solid var(--border)' }}
-            >
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
                 {projects?.map((p: any, i: number) => (
                     <article
                         key={i}
-                        className="group transition-transform hover:translate-y-[-3px]"
-                        style={{ background: 'var(--bg-card)' }}
+                        className="flex flex-col"
+                        style={{ background: 'var(--panel)', minHeight: '280px' }}
                     >
                         {/* MEDIA */}
-                        <div className="aspect-video overflow-hidden relative" style={{ background: 'var(--bg-media)' }}>
+                        <div
+                            style={{
+                                aspectRatio: '16/8.1',
+                                background: p.image ? 'var(--bg-media)' : CASE_BG[i % CASE_BG.length],
+                                position: 'relative',
+                                overflow: 'hidden',
+                            }}
+                        >
                             {p.image && (
                                 <img
                                     src={urlFor(p.image).width(1400).url()}
                                     alt={p.title}
-                                    className="w-full h-full object-cover transition duration-500 group-hover:scale-[1.025]"
+                                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
                                 />
                             )}
+                            {/* gradient overlay */}
+                            <span style={{ position: 'absolute', inset: 0, background: 'linear-gradient(130deg,rgba(255,255,255,.34),rgba(0,0,0,.18))', mixBlendMode: 'multiply' }} />
                         </div>
 
                         {/* BODY */}
-                        <div className="p-[15px_16px_18px]">
-                            <h3 className="text-[18px] tracking-[-0.035em] mb-[4px]" style={{ color: 'var(--fg)' }}>
+                        <div style={{ padding: '12px 14px 15px' }}>
+                            <h3
+                                className="display"
+                                style={{ fontSize: '18px', letterSpacing: '-.035em', lineHeight: 1.04, textTransform: 'uppercase', marginBottom: '6px', color: 'var(--fg)', fontFamily: 'var(--font-display)' }}
+                            >
                                 {p.title}
                             </h3>
-
-                            <p className="text-[12px] leading-[1.35] mb-[12px] max-w-[560px]" style={{ color: 'var(--fg-dim)' }}>
+                            <p style={{ fontSize: '12px', lineHeight: 1.36, color: 'var(--muted)' }}>
                                 {p.description}
                             </p>
-
-                            {/* TAGS */}
-                            <div className="flex gap-[8px] flex-wrap mb-[10px]">
-                                {p.category && (
-                                    <span className="text-[9px] uppercase" style={{ color: 'var(--fg-dim)' }}>
-                                        {p.category}
-                                    </span>
-                                )}
-                            </div>
-
-                            {/* CTA */}
-                            <a
-                                href={`/cases/${p.slug?.current}`}
-                                className="cases-cta text-[11px] uppercase tracking-[0.04em] pb-[4px] transition inline-block"
-                            >
-                                View case
-                            </a>
                         </div>
                     </article>
                 ))}
-            </div>
-
-            {/* CTA */}
-            <div className="mt-[42px]">
-                <a
-                    href="/cases"
-                    className="cases-cta text-[11px] uppercase tracking-[0.045em] underline underline-offset-[5px] transition"
-                >
-                    All cases →
-                </a>
             </div>
         </section>
     );

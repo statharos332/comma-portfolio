@@ -1,19 +1,32 @@
 export default function Statement() {
     return (
-        <section className="min-h-[76vh] flex items-center justify-center text-center py-[115px] px-[clamp(18px,2.4vw,40px)]">
-            <div className="max-w-[970px]">
-                <div
-                    className="text-[clamp(86px,16vw,240px)] leading-[0.75] tracking-[-0.08em] font-black"
-                    style={{ color: 'var(--fg-statement)' }}
-                >
+        <section
+            className="px-[var(--pad)] max-w-[var(--max)] mx-auto text-center"
+            style={{ paddingBottom: '150px' }}
+        >
+            <div style={{ maxWidth: '880px', margin: '0 auto' }}>
+                <div style={{ fontSize: '30px', lineHeight: 1.02, letterSpacing: '-.04em', fontWeight: 650, marginBottom: '8px', color: 'var(--fg)' }}>
                     3
                 </div>
-                <h2
-                    className="text-[clamp(24px,4vw,66px)] leading-[0.88] tracking-[-0.065em] uppercase mt-[10px]"
-                    style={{ color: 'var(--fg)' }}
-                >
+                <h2 style={{ fontSize: '30px', lineHeight: 1.02, letterSpacing: '-.04em', fontWeight: 650, maxWidth: '620px', margin: '0 auto 58px', color: 'var(--fg)' }}>
                     We combine three essential forces required for modern campaigns.
                 </h2>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '36px', textAlign: 'center' }}>
+                    {[
+                        { title: 'Brand Strategy', desc: 'To know what needs to be done.' },
+                        { title: 'Creative',       desc: 'To know how to do it.' },
+                        { title: 'Performance',    desc: 'To ensure results are real.' },
+                    ].map(({ title, desc }) => (
+                        <div key={title}>
+                            <h4 style={{ fontFamily: 'Inter,sans-serif', fontSize: '14px', lineHeight: 1.2, letterSpacing: '-.01em', fontWeight: 800, marginBottom: '8px', color: 'var(--fg)' }}>
+                                {title}
+                            </h4>
+                            <p style={{ fontSize: '12px', lineHeight: 1.35, color: 'var(--muted)' }}>
+                                {desc}
+                            </p>
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     );

@@ -1,55 +1,69 @@
 export default function Hero() {
     return (
-        <section className="min-h-[88vh] grid grid-rows-[1fr_auto] pt-[70px] px-[clamp(18px,2.4vw,40px)]">
-
-            <div className="grid md:grid-cols-[1.18fr_.82fr] gap-[34px] items-end">
-
+        <section
+            className="px-[var(--pad)] max-w-[var(--max)] mx-auto"
+            style={{ paddingTop: '86px', paddingBottom: '150px' }}
+        >
+            {/* GRID */}
+            <div
+                className="hero-grid grid gap-[60px] items-start mb-[76px]"
+                style={{ gridTemplateColumns: '1.34fr .66fr' }}
+            >
                 <div>
-                    <div className="text-[11px] uppercase tracking-[0.08em] mb-[14px]" style={{ color: 'var(--fg-muted)' }}>
-                        Advertising & marketing communication services
+                    <div className="eyebrow mb-[14px]">
+                        Selected output / campaign systems / motion / digital commerce
                     </div>
-
                     <h1
-                        className="text-[clamp(76px,16vw,170px)] leading-[0.72] tracking-[-0.098em] uppercase font-black origin-left"
-                        style={{ color: 'var(--fg)' }}
+                        className="display"
+                        style={{
+                            fontSize: 'clamp(54px,7.4vw,132px)',
+                            maxWidth: '880px',
+                            color: 'var(--fg)',
+                        }}
                     >
-                        WORK<br />THAT<br />MOVES
+                        Work<br />That<br />Moves
                     </h1>
                 </div>
 
-                <div className="self-center max-w-[580px]">
-                    <div className="text-[11px] uppercase tracking-[0.08em] mb-[14px]" style={{ color: 'var(--fg-muted)' }}>
-                        COMMA portfolio / selected output
-                    </div>
-
+                <div style={{ maxWidth: '480px', paddingTop: '10px' }}>
+                    <div className="eyebrow mb-[14px]">COMMA portfolio / selected work</div>
                     <p
-                        className="text-[clamp(21px,2.5vw,44px)] leading-[0.92] tracking-[-0.064em]"
-                        style={{ color: 'var(--fg)' }}
+                        style={{
+                            fontSize: 'clamp(21px,2.5vw,30px)',
+                            lineHeight: .96,
+                            letterSpacing: '-.02em',
+                            fontWeight: 650,
+                            color: 'var(--fg)',
+                            maxWidth: '430px',
+                        }}
                     >
                         Strategy, imagination, design, marketing and technology for brands that live across screens.
                     </p>
                 </div>
-
             </div>
 
+            {/* META */}
             <div
-                className="grid md:grid-cols-3 gap-5 py-[18px] text-[12px] leading-[1.35]"
-                style={{ borderTop: '1px solid var(--border)', color: 'var(--fg-subtle)' }}
+                className="hero-meta grid gap-[42px] pt-[20px] text-[12px] leading-[1.35]"
+                style={{
+                    gridTemplateColumns: '1fr 1fr 1fr',
+                    borderTop: '1px solid var(--line)',
+                    color: 'var(--muted)',
+                }}
             >
                 <div>
-                    <span className="block text-[10px] uppercase tracking-[0.06em] mb-2" style={{ color: 'var(--fg-muted)' }}>Focus</span>
-                    Fashion ecommerce / retail / lifestyle / digital commerce
+                    <strong className="eyebrow block mb-2">Focus</strong>
+                    Fashion / retail / lifestyle / digital commerce
                 </div>
                 <div>
-                    <span className="block text-[10px] uppercase tracking-[0.06em] mb-2" style={{ color: 'var(--fg-muted)' }}>Output</span>
-                    Campaigns, social content, brand systems, TVC, performance creatives
+                    <strong className="eyebrow block mb-2">Output</strong>
+                    Campaigns, social content, brand systems, TVC, performance creatives.
                 </div>
                 <div>
-                    <span className="block text-[10px] uppercase tracking-[0.06em] mb-2" style={{ color: 'var(--fg-muted)' }}>Scroll</span>
-                    Selected fragments from projects, pitches and live campaigns ↓
+                    <strong className="eyebrow block mb-2">Selected</strong>
+                    Fragments from campaigns, pitches and live communication.
                 </div>
             </div>
-
         </section>
     );
 }
