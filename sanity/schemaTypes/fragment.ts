@@ -24,11 +24,15 @@ export default defineType({
             type: 'string',
             options: {
                 list: [
-                    { title: 'Campaign', value: 'campaign' },
-                    { title: 'Social', value: 'social' },
+                    { title: 'All', value: 'all' },
+                    { title: 'Social media', value: 'social' },
+                    { title: 'TVC production', value: 'tvcproduction' },
+                    { title: 'Digital strategy', value: 'digital' },
                     { title: 'Branding', value: 'branding' },
-                    { title: 'Motion', value: 'motion' },
-                    { title: 'Editorial', value: 'editorial' },
+                    { title: 'Campaign', value: 'campaign' },
+                    { title: 'E-commerce', value: 'ecommerce' },
+
+
                 ],
             },
         }),
