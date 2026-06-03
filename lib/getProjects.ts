@@ -1,14 +1,15 @@
-import { client } from '@/sanity/lib/client'
+import { sanityFetch } from '@/sanity/lib/live'
+
+const query = `*[_type == "project"]{
+    _id,
+    title,
+    description,
+    image,
+    category,
+    slug
+}`
 
 export async function getProjects() {
-    return client.fetch(`
-    *[_type == "project"]{
-      _id,
-      title,
-      description,
-      image,
-      category,
-      slug
-    }
-  `)
+    const { data } = await sanityFetch({ query })
+    return data
 }
