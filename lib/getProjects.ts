@@ -11,5 +11,5 @@ const query = `*[_type == "project"]{
 
 export async function getProjects() {
     const { data } = await sanityFetch({ query })
-    return data
+    return data as any[]
 }

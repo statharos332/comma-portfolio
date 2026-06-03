@@ -16,5 +16,5 @@ const query = `*[_type == "fragment"] | order(order asc) {
 
 export async function getFragments() {
     const { data } = await sanityFetch({ query })
-    return data
+    return data as any[]
 }
