@@ -95,33 +95,100 @@ a { color: inherit; text-decoration: none; }
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 
-/* ─── Responsive ─────────────────────────────── */
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════ */
+
+/* ─── Tablet (≤900px) ───────────────────────── */
 @media (max-width: 900px) {
-    .archive-grid { grid-template-columns: repeat(4,1fr) !important; }
-    .footer-cols  { grid-template-columns: 1fr !important; gap: 28px !important; }
-    .modal-stage  { padding: 82px 16px 52px !important; }
-    .modal-info   { grid-template-columns: 1fr 1.35fr !important; gap: 22px !important; padding: 26px 14px 0 !important; }
-    .modal-info > div:nth-child(2) { display: none; }
-    .hero-grid    { grid-template-columns: 1fr !important; }
-    .hero-meta    { grid-template-columns: 1fr !important; }
-    .section-head { grid-template-columns: 1fr !important; }
-    .section-head .note-right { text-align: left !important; }
-    .services-list{ grid-template-columns: 1fr !important; }
+    .footer-cols   { grid-template-columns: 1fr !important; gap: 28px !important; }
+    .hero-grid     { grid-template-columns: 1fr !important; }
+    .hero-meta     { grid-template-columns: 1fr !important; }
+    .services-list { grid-template-columns: 1fr !important; }
     .services-list div:nth-child(even) { text-align: left !important; }
-    .footer-cols  { grid-template-columns: 1fr !important; gap: 28px !important; }
-    .filters-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; }
+    .section-head  { grid-template-columns: 1fr !important; justify-items: center; text-align: center !important; gap: 8px !important; }
+    .section-head .note, .section-head .note-right { display: none; }
+    .archive-grid  { grid-template-columns: repeat(5,1fr) !important; gap: 5px !important; }
 }
 
-@media (max-width: 700px) {
-
+/* ─── Mobile (≤600px) ───────────────────────── */
+@media (max-width: 600px) {
+    .archive-grid  { grid-template-columns: repeat(3,1fr) !important; gap: 4px !important; }
+    .cases-grid    { grid-template-columns: 1fr !important; }
 }
 
-/* Cases grid */
-.cases-grid {
-    grid-template-columns: 1fr 1fr;
+/* Cases grid desktop */
+.cases-grid { grid-template-columns: 1fr 1fr; }
+
+/* ══════════════════════════════════════════════
+   PREMIUM FILTER CHIPS (Apple-inspired)
+   ══════════════════════════════════════════════ */
+
+/* wrapper — fade mask on both edges for scroll hint */
+.filters-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    overflow-x: auto;
+    overflow-y: visible;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px 2px;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 32px, black calc(100% - 32px), transparent 100%);
+    mask-image:         linear-gradient(to right, transparent 0%, black 32px, black calc(100% - 32px), transparent 100%);
 }
-@media (max-width: 700px) {
-    .cases-grid {
-        grid-template-columns: 1fr;
-    }
+.filters-row::-webkit-scrollbar { display: none; }
+
+/* individual chip */
+.filter-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    height: 34px;
+    padding: 0 14px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--muted);
+    transition: background .18s ease, color .18s ease, border-color .18s ease, transform .12s ease;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+.filter-chip:active {
+    transform: scale(0.95);
+}
+
+.filter-chip[data-active="true"] {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+    font-weight: 700;
+}
+
+/* row separator between category and brand filters */
+.filters-divider {
+    width: 1px;
+    height: 18px;
+    background: var(--line);
+    flex-shrink: 0;
+    margin: 0 4px;
+}
+
+/* label before chips */
+.filters-label {
+    font-size: 9px;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--soft);
+    flex-shrink: 0;
+    padding-right: 4px;
 }

@@ -34,10 +34,10 @@ function toEmbed(url: string): string {
    MODAL — δεν αγγίζουμε τίποτα εδώ
    ══════════════════════════════════════════════════════ */
 function Modal({
-    fragment,
-    initialIndex,
-    onClose,
-}: {
+                   fragment,
+                   initialIndex,
+                   onClose,
+               }: {
     fragment: Fragment;
     initialIndex: number;
     onClose: () => void;
@@ -108,14 +108,8 @@ function Modal({
 
             {/* MAIN CONTENT */}
             <div className="flex-1 flex items-center justify-center relative overflow-hidden px-4 py-4 gap-3">
-
-                {/* PREV GHOST */}
                 {items.length > 1 && prevItem?.type === 'image' && prevItem?.image && (
-                    <button
-                        onClick={prev}
-                        aria-label="Previous"
-                        className="hidden md:flex flex-shrink-0 w-[80px] items-center justify-center group"
-                    >
+                    <button onClick={prev} aria-label="Previous" className="hidden md:flex flex-shrink-0 w-[80px] items-center justify-center group">
                         <div className="w-[72px] h-[52px] overflow-hidden rounded opacity-30 group-hover:opacity-55 transition">
                             <img src={urlFor(prevItem.image).width(200).url()} className="w-full h-full object-cover" alt="" />
                         </div>
@@ -125,16 +119,10 @@ function Modal({
                     <div className="hidden md:block w-[80px] flex-shrink-0" />
                 )}
 
-                {/* CURRENT */}
                 <div className="flex-1 flex items-center justify-center max-h-full">
                     {current?.type === 'video' && current?.videoUrl ? (
                         <div className="w-full max-w-[900px] aspect-video rounded overflow-hidden">
-                            <iframe
-                                src={toEmbed(current.videoUrl)}
-                                className="w-full h-full"
-                                allow="autoplay; fullscreen"
-                                allowFullScreen
-                            />
+                            <iframe src={toEmbed(current.videoUrl)} className="w-full h-full" allow="autoplay; fullscreen" allowFullScreen />
                         </div>
                     ) : current?.image ? (
                         <img
@@ -144,24 +132,16 @@ function Modal({
                             style={{ userSelect: 'none' }}
                         />
                     ) : null}
-
                     {current?.caption && (
-                        <p
-                            className="absolute bottom-3 left-1/2 -translate-x-1/2 text-[11px] px-3 py-1 rounded-full"
-                            style={{ color: 'rgba(255,255,255,0.45)', background: 'rgba(0,0,0,0.5)' }}
-                        >
+                        <p className="absolute bottom-3 left-1/2 -translate-x-1/2 text-[11px] px-3 py-1 rounded-full"
+                           style={{ color: 'rgba(255,255,255,0.45)', background: 'rgba(0,0,0,0.5)' }}>
                             {current.caption}
                         </p>
                     )}
                 </div>
 
-                {/* NEXT GHOST */}
                 {items.length > 1 && nextItem?.type === 'image' && nextItem?.image && (
-                    <button
-                        onClick={next}
-                        aria-label="Next"
-                        className="hidden md:flex flex-shrink-0 w-[80px] items-center justify-center group"
-                    >
+                    <button onClick={next} aria-label="Next" className="hidden md:flex flex-shrink-0 w-[80px] items-center justify-center group">
                         <div className="w-[72px] h-[52px] overflow-hidden rounded opacity-30 group-hover:opacity-55 transition">
                             <img src={urlFor(nextItem.image).width(200).url()} className="w-full h-full object-cover" alt="" />
                         </div>
@@ -174,47 +154,29 @@ function Modal({
 
             {/* BOTTOM NAV */}
             {items.length > 1 && (
-                <div
-                    className="flex items-center justify-center gap-4 py-3 flex-shrink-0"
-                    style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}
-                >
-                    <button
-                        onClick={prev}
-                        aria-label="Previous"
-                        className="w-8 h-8 flex items-center justify-center rounded-full transition"
-                        style={{ color: 'rgba(255,255,255,0.6)', background: 'rgba(255,255,255,0.06)' }}
-                        onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.14)')}
-                        onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.06)')}
-                    >
+                <div className="flex items-center justify-center gap-4 py-3 flex-shrink-0"
+                     style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+                    <button onClick={prev} aria-label="Previous"
+                            className="w-8 h-8 flex items-center justify-center rounded-full transition"
+                            style={{ color: 'rgba(255,255,255,0.6)', background: 'rgba(255,255,255,0.06)' }}
+                            onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.14)')}
+                            onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.06)')}>
                         <svg width="16" height="16" viewBox="0 0 28 28" fill="none">
                             <path d="M9.64 14c0-.32.1-.58.36-.83l4.63-4.7c.19-.19.41-.28.68-.28.54 0 .98.46.98 1.01 0 .28-.12.54-.32.74L11.94 14l3.97 4.05c.2.21.32.46.32.74 0 .56-.44 1.01-.98 1.01-.27 0-.5-.1-.68-.28L10 14.83C9.74 14.57 9.64 14.31 9.64 14Z" fill="currentColor"/>
                         </svg>
                     </button>
-
                     <div className="flex gap-[6px]">
                         {items.map((_, i) => (
-                            <button
-                                key={i}
-                                onClick={() => setIdx(i)}
-                                aria-label={`Go to ${i + 1}`}
-                                className="rounded-full transition-all duration-200"
-                                style={{
-                                    width: i === idx ? '18px' : '6px',
-                                    height: '6px',
-                                    background: i === idx ? 'white' : 'rgba(255,255,255,0.25)',
-                                }}
-                            />
+                            <button key={i} onClick={() => setIdx(i)} aria-label={`Go to ${i + 1}`}
+                                    className="rounded-full transition-all duration-200"
+                                    style={{ width: i === idx ? '18px' : '6px', height: '6px', background: i === idx ? 'white' : 'rgba(255,255,255,0.25)' }} />
                         ))}
                     </div>
-
-                    <button
-                        onClick={next}
-                        aria-label="Next"
-                        className="w-8 h-8 flex items-center justify-center rounded-full transition"
-                        style={{ color: 'rgba(255,255,255,0.6)', background: 'rgba(255,255,255,0.06)' }}
-                        onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.14)')}
-                        onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.06)')}
-                    >
+                    <button onClick={next} aria-label="Next"
+                            className="w-8 h-8 flex items-center justify-center rounded-full transition"
+                            style={{ color: 'rgba(255,255,255,0.6)', background: 'rgba(255,255,255,0.06)' }}
+                            onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.14)')}
+                            onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.06)')}>
                         <svg width="16" height="16" viewBox="0 0 28 28" fill="none">
                             <path d="M18.25 14c0 .31-.1.57-.36.82l-4.63 4.7c-.18.19-.41.28-.68.28-.54 0-.98-.45-.98-1.01 0-.28.11-.53.32-.74L15.95 14l-3.97-4.05c-.21-.2-.32-.46-.32-.74 0-.55.44-1.01.98-1.01.27 0 .5.1.68.28l4.63 4.7c.25.24.36.5.36.82Z" fill="currentColor"/>
                         </svg>
@@ -226,9 +188,9 @@ function Modal({
 }
 
 /* ══════════════════════════════════════════════════════
-   FRAGMENTS SECTION — νέο design από το HTML reference
+   FRAGMENTS SECTION
    ══════════════════════════════════════════════════════ */
-const FILTER_LABELS: Record<string, string> = {
+const CATEGORY_LABELS: Record<string, string> = {
     all:       'All',
     social:    'Social media',
     tvc:       'TVC production',
@@ -242,16 +204,34 @@ const FILTER_LABELS: Record<string, string> = {
 
 const BG_COLORS = ['#aaa59c','#171717','#d4cec3','#7d7d7b','#c9c1b5','#343434'];
 
+const filterBtn = (active: boolean) => ({
+    border: 0,
+    background: 'transparent',
+    cursor: 'pointer',
+    padding: 0,
+    fontSize: '10px',
+    letterSpacing: '.045em',
+    textTransform: 'uppercase' as const,
+    whiteSpace: 'nowrap' as const,
+    color:      active ? 'var(--fg)'    : 'var(--muted)',
+    fontWeight: active ? 800            : 500,
+});
+
 export default function Fragments({ fragments = [] }: { fragments?: Fragment[] }) {
-    const [filter, setFilter]     = useState('all');
-    const [open, setOpen]         = useState<{ fragment: Fragment; index: number } | null>(null);
+    const [catFilter,    setCatFilter]    = useState('all');
+    const [clientFilter, setClientFilter] = useState('all');
+    const [open, setOpen] = useState<{ fragment: Fragment; index: number } | null>(null);
 
-    const filtered = filter === 'all'
-        ? fragments
-        : fragments.filter(f => f.category === filter);
+    // build filter lists from actual data
+    const cats    = ['all', ...Array.from(new Set(fragments.map(f => f.category).filter(Boolean)))] as string[];
+    const clients = ['all', ...Array.from(new Set(fragments.map(f => f.client).filter(Boolean)))] as string[];
 
-    // categories that actually exist in the data
-    const cats = ['all', ...Array.from(new Set(fragments.map(f => f.category).filter(Boolean)))] as string[];
+    // apply both filters together
+    const filtered = fragments.filter(f => {
+        const matchCat    = catFilter    === 'all' || f.category === catFilter;
+        const matchClient = clientFilter === 'all' || f.client   === clientFilter;
+        return matchCat && matchClient;
+    });
 
     if (!fragments.length) return null;
 
@@ -263,15 +243,11 @@ export default function Fragments({ fragments = [] }: { fragments?: Fragment[] }
                 style={{ paddingBottom: '150px' }}
             >
                 {/* SECTION HEAD */}
-                <div
-                    className="section-head grid items-end gap-6 mb-[28px]"
-                    style={{ gridTemplateColumns: '1fr auto 1fr' }}
-                >
+                <div className="section-head grid items-end gap-6 mb-[28px]"
+                     style={{ gridTemplateColumns: '1fr auto 1fr' }}>
                     <span className="note">01 / Fragments</span>
-                    <h2
-                        className="display"
-                        style={{ fontSize: 'clamp(54px,7.4vw,132px)', color: 'var(--fg)', whiteSpace: 'nowrap' }}
-                    >
+                    <h2 className="display"
+                        style={{ fontSize: 'clamp(54px,7.4vw,132px)', color: 'var(--fg)', whiteSpace: 'nowrap' }}>
                         Archive
                     </h2>
                     <span className="note note-right" style={{ textAlign: 'right' }}>
@@ -279,39 +255,47 @@ export default function Fragments({ fragments = [] }: { fragments?: Fragment[] }
                     </span>
                 </div>
 
-                {/* FILTERS */}
-                <div
-                    className="filters-wrap flex gap-[26px] items-center overflow-auto no-scrollbar"
-                    style={{ margin: '0 0 22px', padding: '12px 0', scrollbarWidth: 'none' }}
-                    aria-label="Archive filters"
-                >
+                {/* ── ROW 1: CATEGORY FILTERS ── */}
+                <div className="filters-wrap flex gap-[26px] items-center overflow-auto no-scrollbar"
+                     style={{ padding: '10px 0 0', scrollbarWidth: 'none' }}
+                     aria-label="Filter by category">
                     {cats.map(cat => (
-                        <button
-                            key={cat}
-                            onClick={() => setFilter(cat)}
-                            style={{
-                                border: 0,
-                                background: 'transparent',
-                                cursor: 'pointer',
-                                padding: 0,
-                                fontSize: '10px',
-                                letterSpacing: '.045em',
-                                textTransform: 'uppercase',
-                                whiteSpace: 'nowrap',
-                                color:      filter === cat ? 'var(--fg)'    : 'var(--muted)',
-                                fontWeight: filter === cat ? 800            : 500,
-                            }}
-                        >
-                            {FILTER_LABELS[cat] ?? cat}
+                        <button key={cat} onClick={() => setCatFilter(cat)} data-active={catFilter === cat} style={filterBtn(catFilter === cat)}>
+                            {CATEGORY_LABELS[cat] ?? cat}
                         </button>
                     ))}
                 </div>
 
-                {/* 10-COLUMN GRID */}
-                <div
-                    className="archive-grid"
-                    style={{ display: 'grid', gridTemplateColumns: 'repeat(10,1fr)', gap: '8px' }}
-                >
+                {/* ── ROW 2: CLIENT FILTERS (only when > 1 client exists) ── */}
+                {clients.length > 2 && (
+                    <div className="filters-wrap flex gap-[26px] items-center overflow-auto no-scrollbar"
+                         style={{ padding: '8px 0 14px', borderBottom: '1px solid var(--line)', scrollbarWidth: 'none' }}
+                         aria-label="Filter by client">
+                        {clients.map(cl => (
+                            <button key={cl} onClick={() => setClientFilter(cl)} data-active={clientFilter === cl} style={filterBtn(clientFilter === cl)}>
+                                {cl === 'all' ? 'All brands' : cl}
+                            </button>
+                        ))}
+                    </div>
+                )}
+
+                {/* result count */}
+                {(catFilter !== 'all' || clientFilter !== 'all') && (
+                    <p style={{ fontSize: '10px', color: 'var(--muted)', padding: '10px 0 14px', letterSpacing: '.04em', textTransform: 'uppercase' }}>
+                        {filtered.length} fragment{filtered.length !== 1 ? 's' : ''}
+                        {catFilter !== 'all' && ` · ${CATEGORY_LABELS[catFilter] ?? catFilter}`}
+                        {clientFilter !== 'all' && ` · ${clientFilter}`}
+                        <button
+                            onClick={() => { setCatFilter('all'); setClientFilter('all'); }}
+                            style={{ marginLeft: '14px', color: 'var(--fg)', cursor: 'pointer', background: 'none', border: 0, fontSize: '10px', letterSpacing: '.04em', textTransform: 'uppercase', textDecoration: 'underline', textUnderlineOffset: '4px' }}>
+                            Clear
+                        </button>
+                    </p>
+                )}
+
+                {/* ── 10-COLUMN GRID ── */}
+                <div className="archive-grid"
+                     style={{ display: 'grid', gridTemplateColumns: 'repeat(10,1fr)', gap: '8px', marginTop: '14px' }}>
                     {filtered.map((frag, i) => (
                         <button
                             key={frag._id}
@@ -319,26 +303,16 @@ export default function Fragments({ fragments = [] }: { fragments?: Fragment[] }
                             aria-label={`Open ${frag.title}`}
                             className="group"
                             style={{
-                                position: 'relative',
-                                aspectRatio: '1.28/1',
-                                overflow: 'hidden',
+                                position: 'relative', aspectRatio: '1.28/1', overflow: 'hidden',
                                 background: BG_COLORS[i % BG_COLORS.length],
-                                minHeight: '82px',
-                                border: 0,
-                                cursor: 'pointer',
+                                minHeight: '82px', border: 0, cursor: 'pointer',
                             }}
                         >
-                            {/* gradient overlay — always present like .thumb:before */}
-                            <span
-                                style={{
-                                    position: 'absolute', inset: 0,
-                                    background: 'linear-gradient(135deg,rgba(255,255,255,.35),rgba(0,0,0,.22))',
-                                    mixBlendMode: 'multiply',
-                                    zIndex: 1,
-                                }}
-                            />
-
-                            {/* cover image */}
+                            <span style={{
+                                position: 'absolute', inset: 0,
+                                background: 'linear-gradient(135deg,rgba(255,255,255,.35),rgba(0,0,0,.22))',
+                                mixBlendMode: 'multiply', zIndex: 1,
+                            }} />
                             {frag.coverImage && (
                                 <img
                                     src={urlFor(frag.coverImage).width(320).url()}
@@ -347,50 +321,36 @@ export default function Fragments({ fragments = [] }: { fragments?: Fragment[] }
                                     style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
                                 />
                             )}
-
-                            {/* title on hover — like .thumb:after */}
-                            <span
-                                className="group-hover:opacity-100"
-                                style={{
-                                    position: 'absolute', left: 8, bottom: 8, right: 8,
-                                    fontSize: '8px', lineHeight: 1.1,
-                                    textTransform: 'uppercase',
-                                    color: 'rgba(255,255,255,.66)',
-                                    letterSpacing: '.04em',
-                                    opacity: 0,
-                                    transition: '.2s',
-                                    zIndex: 2,
-                                }}
-                            >
+                            <span className="group-hover:opacity-100" style={{
+                                position: 'absolute', left: 8, bottom: 8, right: 8,
+                                fontSize: '8px', lineHeight: 1.1, textTransform: 'uppercase',
+                                color: 'rgba(255,255,255,.66)', letterSpacing: '.04em',
+                                opacity: 0, transition: '.2s', zIndex: 2,
+                            }}>
                                 {frag.title}
                             </span>
                         </button>
                     ))}
                 </div>
 
-                <a
-                    href="#fragments"
-                    style={{
-                        display: 'inline-block',
-                        fontSize: '10px',
-                        color: 'var(--muted)',
-                        textTransform: 'uppercase',
-                        marginTop: '22px',
-                        textDecoration: 'underline',
-                        textUnderlineOffset: '5px',
-                    }}
-                >
+                {/* empty state */}
+                {filtered.length === 0 && (
+                    <p style={{ fontSize: '12px', color: 'var(--muted)', padding: '40px 0', textAlign: 'center' }}>
+                        No fragments match this filter combination.
+                    </p>
+                )}
+
+                <a href="#fragments" style={{
+                    display: 'inline-block', fontSize: '10px', color: 'var(--muted)',
+                    textTransform: 'uppercase', marginTop: '22px',
+                    textDecoration: 'underline', textUnderlineOffset: '5px',
+                }}>
                     All fragments →
                 </a>
             </section>
 
-            {/* MODAL — αναλλοίωτο */}
             {open && (
-                <Modal
-                    fragment={open.fragment}
-                    initialIndex={open.index}
-                    onClose={() => setOpen(null)}
-                />
+                <Modal fragment={open.fragment} initialIndex={open.index} onClose={() => setOpen(null)} />
             )}
         </>
     );
