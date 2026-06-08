@@ -31,6 +31,7 @@ export default defineType({
                     { title: 'Branding', value: 'branding' },
                     { title: 'Campaign', value: 'campaign' },
                     { title: 'E-commerce', value: 'ecommerce' },
+                    { title: 'Email Marketing', value: 'emailMarketing' }
 
 
                 ],
