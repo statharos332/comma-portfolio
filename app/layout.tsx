@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import ThemeInit from "./components/ThemeInit";
+import Script from "next/script";
 import { SanityLive } from "@/sanity/lib/live";
 import "./globals.css";
 
@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "COMMA — Work That Moves",
+  title: "COMMA Archives — Work That Moves",
   description: "Advertising & marketing communication services",
 };
 
@@ -31,9 +31,15 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-      <ThemeInit />
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light')}catch(e){}`,
+          }}
+        />
         {children}
-      <SanityLive />
+        <SanityLive />
       </body>
     </html>
   );
