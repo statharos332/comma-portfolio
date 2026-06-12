@@ -24,11 +24,12 @@ export default defineType({
             type: 'string',
             options: {
                 list: [
-                    { title: 'Campaign', value: 'campaign' },
-                    { title: 'Social', value: 'social' },
+                    { title: 'Campaigns', value: 'campaigns' },
+                    { title: 'Social Media', value: 'socialMedia' },
                     { title: 'Branding', value: 'branding' },
-                    { title: 'Motion', value: 'motion' },
-                    { title: 'Editorial', value: 'editorial' },
+                    { title: 'Digital Strategy', value: 'digitalStrategy' },
+                    { title: 'E-commerce', value: 'ecommerce' },
+                    { title: 'Email Marketing', value: 'emailMarketing' },
                 ],
             },
         }),
